@@ -206,7 +206,7 @@ backend:
   image:
     registry: "ghcr.io"
     repository: patchmon/patchmon-backend
-    tag: 1.4.1
+    tag: 1.4.2
     pullPolicy: IfNotPresent
   
   # Deployment configuration
@@ -379,7 +379,7 @@ frontend:
   image:
     registry: "ghcr.io"
     repository: patchmon/patchmon-frontend
-    tag: 1.4.1
+    tag: 1.4.2
     pullPolicy: IfNotPresent
   
   # Deployment configuration

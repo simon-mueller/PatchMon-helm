@@ -183,7 +183,7 @@ helm install patchmon oci://ghcr.io/ruthlessbeat200/charts/patchmon \
 | `backend.enabled` | Enable backend deployment | `true` |
 | `backend.image.registry` | Backend image registry | `ghcr.io` |
 | `backend.image.repository` | Backend image repository | `patchmon/patchmon-backend` |
-| `backend.image.tag` | Backend image tag | `1.4.1` |
+| `backend.image.tag` | Backend image tag | `1.4.2` |
 | `backend.replicaCount` | Number of backend replicas | `1` (>1 requires RWX storage) |
 | `backend.jwtSecret` | JWT secret (**must be set or use existingSecret**) | `""` |
 | `backend.env.serverProtocol` | Server protocol | `http` |
@@ -204,7 +204,7 @@ helm install patchmon oci://ghcr.io/ruthlessbeat200/charts/patchmon \
 | `frontend.enabled` | Enable frontend deployment | `true` |
 | `frontend.image.registry` | Frontend image registry | `ghcr.io` |
 | `frontend.image.repository` | Frontend image repository | `patchmon/patchmon-frontend` |
-| `frontend.image.tag` | Frontend image tag | `1.4.1` |
+| `frontend.image.tag` | Frontend image tag | `1.4.2` |
 | `frontend.replicaCount` | Number of frontend replicas | `1` |
 | `frontend.autoscaling.enabled` | Enable HPA for frontend | `false` |
 | `frontend.autoscaling.minReplicas` | Minimum replicas | `1` |
@@ -254,8 +254,8 @@ global:
 This will override component-specific registries and pull all images from your registry:
 - `registry.example.com/postgres:18-alpine`
 - `registry.example.com/redis:8-alpine`
-- `registry.example.com/patchmon/patchmon-backend:1.4.1`
-- `registry.example.com/patchmon/patchmon-frontend:1.4.1`
+- `registry.example.com/patchmon/patchmon-backend:1.4.2`
+- `registry.example.com/patchmon/patchmon-frontend:1.4.2`
 - `registry.example.com/busybox:latest` (init containers)
 
 Without `global.imageRegistry`, components use their default registries:
