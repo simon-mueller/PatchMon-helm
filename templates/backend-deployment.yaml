@@ -234,6 +234,10 @@ spec:
             - name: OIDC_READONLY_GROUP
               value: {{ .Values.backend.oidc.groups.readonly | quote }}
             {{- end }}
+            {{- range .Values.backend.extraEnv }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+            {{- end }}
             {{- end }}
           ports:
             - name: http
@@ -270,10 +274,33 @@ spec:
           volumeMounts:
             - name: agent-files
               mountPath: /app/agents
+            {{- range .Values.backend.extraVolumeMounts }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+              {{- if .subPath }}
+              subPath: {{ .subPath }}
+              {{- end }}
+              {{- if hasKey . "readOnly" }}
+              readOnly: {{ .readOnly }}
+              {{- else }}
+              readOnly: true
+              {{- end }}
+            {{- end }}
       volumes:
         - name: agent-files
           persistentVolumeClaim:
             claimName: {{ include "patchmon.fullname" . }}-agent-files
+        {{- range .Values.backend.extraVolumes }}
+        - name: {{ .name }}
+          {{- if .configMap }}
+          configMap:
+            name: {{ .configMap.name }}
+          {{- end }}
+          {{- if .secret }}
+          secret:
+            secretName: {{ .secret.secretName }}
+          {{- end }}
+        {{- end }}
       {{- with .Values.backend.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
