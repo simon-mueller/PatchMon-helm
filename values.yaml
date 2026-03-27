@@ -370,6 +370,21 @@ backend:
     fixPermissions:
       enabled: false  # Disabled by default - fsGroup handles permissions. Enable only if needed and cluster allows privileged init containers.
   
+  extraEnv: []
+    # - name: NODE_EXTRA_CA_CERTS
+    #   value: /etc/ssl/certs/authentik-ca.crt
+  extraVolumeMounts: []
+    # - name: authentik-ca
+    #   mountPath: /etc/ssl/certs/authentik-ca.crt
+    #   subPath: ca.crt
+    #   readOnly: true
+  extraVolumes: []
+    # - name: authentik-ca
+    #   configMap:
+    #     name: authentik-ca
+
+
+
   # Node selector
   nodeSelector: {}
   
